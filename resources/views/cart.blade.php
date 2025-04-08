@@ -42,15 +42,16 @@
               </tr>
             </thead>
             <tbody>
+            @foreach($items as $item)
               <tr>
                 <td>
                   <div class="shopping-cart__product-item">
-                    <img loading="lazy" src="assets/images/cart-item-1.jpg" width="120" height="120" alt="" />
+                    <img loading="lazy" src="{{asset('uploads/products/thumbnails')}}/{{$item->model->image}}" width="120" height="120" alt="{{$item->name}}" />
                   </div>
                 </td>
                 <td>
                   <div class="shopping-cart__product-item__detail">
-                    <h4>Zessi Dresses</h4>
+                    <h4>{{$item->name}}</h4>
                     <ul class="shopping-cart__product-item__options">
                       <li>Color: Yellow</li>
                       <li>Size: L</li>
@@ -58,7 +59,7 @@
                   </div>
                 </td>
                 <td>
-                  <span class="shopping-cart__product-price">$99</span>
+                  <span class="shopping-cart__product-price">{{$item->price}}</span>
                 </td>
                 <td>
                   <div class="qty-control position-relative">
@@ -68,7 +69,7 @@
                   </div>
                 </td>
                 <td>
-                  <span class="shopping-cart__subtotal">$297</span>
+                  <span class="shopping-cart__subtotal">{{$item->subTotal()}}</span>
                 </td>
                 <td>
                   <a href="#" class="remove-cart">
@@ -79,6 +80,7 @@
                   </a>
                 </td>
               </tr>
+              @endforeach
               <tr>
                 <td>
                   <div class="shopping-cart__product-item">
@@ -172,38 +174,19 @@
                 <tbody>
                   <tr>
                     <th>Subtotal</th>
-                    <td>$1300</td>
+                    <td>${{Cart::instance('cart')->subtotal()}}</td>
                   </tr>
                   <tr>
                     <th>Shipping</th>
-                    <td>
-                      <div class="form-check">
-                        <input class="form-check-input form-check-input_fill" type="checkbox" value=""
-                          id="free_shipping">
-                        <label class="form-check-label" for="free_shipping">Free shipping</label>
-                      </div>
-                      <div class="form-check">
-                        <input class="form-check-input form-check-input_fill" type="checkbox" value="" id="flat_rate">
-                        <label class="form-check-label" for="flat_rate">Flat rate: $49</label>
-                      </div>
-                      <div class="form-check">
-                        <input class="form-check-input form-check-input_fill" type="checkbox" value=""
-                          id="local_pickup">
-                        <label class="form-check-label" for="local_pickup">Local pickup: $8</label>
-                      </div>
-                      <div>Shipping to AL.</div>
-                      <div>
-                        <a href="#" class="menu-link menu-link_us-s">CHANGE ADDRESS</a>
-                      </div>
-                    </td>
+                    <td>Free</td>
                   </tr>
                   <tr>
                     <th>VAT</th>
-                    <td>$19</td>
+                    <td>${{Cart::instance('cart')->tax()}}</td>
                   </tr>
                   <tr>
                     <th>Total</th>
-                    <td>$1319</td>
+                    <td>${{Cart::instance('cart')->total()}}</td>
                   </tr>
                 </tbody>
               </table>

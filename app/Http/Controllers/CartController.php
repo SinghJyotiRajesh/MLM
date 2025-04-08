@@ -2,7 +2,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Overtrue\LaravelShoppingCart\Cart;
+use Overtrue\Mlm\Cart;
 
 
 class CartController extends Controller

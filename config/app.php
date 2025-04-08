@@ -122,14 +122,17 @@ return [
         'driver' => env('APP_MAINTENANCE_DRIVER', 'file'),
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
-    // 'providers' => [
-    //     Overtrue\LaravelShoppingCart\ServiceProvider::class,
+//     'providers' => [
+//         Overtrue\LaravelShoppingCart\ServiceProvider::class,
+    
 
-    // ],
-    // 'aliases' => [
-    //    'Cart' => Overtrue\LaravelShoppingCart\Facade::class,
 
-    // ],
+//      ],
+//    'aliases' => [
+//      'Cart' => Overtrue\LaravelShoppingCart\Facade::class,
+
+ 
+//     ],
 
 
 ];

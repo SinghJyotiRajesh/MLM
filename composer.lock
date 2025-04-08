@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "281f5971ba95f41aeec8cd464a80befc",
+    "content-hash": "65b4cbd27334fce60ba1da5abc2ead6e",
     "packages": [
         {
             "name": "binafy/laravel-cart",
@@ -76,7 +76,7 @@
                 "laravel-cart",
                 "laravel-cart-shop",
                 "laravel-shop",
-                "mlm",
+                "laravelshoppingcart",
                 "milwad"
             ],
             "support": {
@@ -3655,6 +3655,70 @@
                 }
             ],
             "time": "2024-04-27T21:32:50+00:00"
+        },
+        {
+            "name": "surfsidemedia/shoppingcart",
+            "version": "v2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/surfsidemedia/LaravelShoppingcart.git",
+                "reference": "55cb634d3d5e7834b67cb4e15cb8b71e31546ae4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/surfsidemedia/LaravelShoppingcart/zipball/55cb634d3d5e7834b67cb4e15cb8b71e31546ae4",
+                "reference": "55cb634d3d5e7834b67cb4e15cb8b71e31546ae4",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/events": "5.1.*|5.2.*|5.3.*|5.4.*|5.5.*|5.6.*|5.7.*|5.8.*|^6|^7|^8|^9|^10|^11|^12",
+                "illuminate/session": "5.1.*|5.2.*|5.3.*|5.4.*|5.5.*|5.6.*|5.7.*|5.8.*|^6|^7|^8|^9|^10|^11|^12",
+                "illuminate/support": "5.1.*|5.2.*|5.3.*|5.4.*|5.5.*|5.6.*|5.7.*|5.8.*|^6|^7|^8|^9|^10|^11|^12"
+            },
+            "require-dev": {
+                "mockery/mockery": "~1.6",
+                "orchestra/testbench": "~3.1",
+                "phpunit/phpunit": "~5.0 || ~6.0 || ~7.0 || ~10.0 || ^10.5 || ^11.5"
+            },
+            "suggest": {
+                "Surfsidemedia/notify": "Simple flash notifications for Laravel"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "aliases": {
+                        "Cart": "Surfsidemedia\\Shoppingcart\\Facades\\Cart"
+                    },
+                    "providers": [
+                        "Surfsidemedia\\Shoppingcart\\ShoppingcartServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Surfsidemedia\\Shoppingcart\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sudhir Kumar",
+                    "email": "surfsidesmedia@gmail.com"
+                }
+            ],
+            "description": "Laravel Shoppingcart",
+            "keywords": [
+                "laravel",
+                "shoppingcart"
+            ],
+            "support": {
+                "issues": "https://github.com/surfsidemedia/LaravelShoppingcart/issues",
+                "source": "https://github.com/surfsidemedia/LaravelShoppingcart/tree/v2.0.0"
+            },
+            "time": "2025-03-27T16:52:51+00:00"
         },
         {
             "name": "symfony/clock",
@@ -7726,16 +7790,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "11.5.16",
+            "version": "11.5.17",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "8c37a989b1e42afe82d6d0cf5b284b76ebd73f65"
+                "reference": "fd2e863a2995cdfd864fb514b5e0b28b09895b5c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/8c37a989b1e42afe82d6d0cf5b284b76ebd73f65",
-                "reference": "8c37a989b1e42afe82d6d0cf5b284b76ebd73f65",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/fd2e863a2995cdfd864fb514b5e0b28b09895b5c",
+                "reference": "fd2e863a2995cdfd864fb514b5e0b28b09895b5c",
                 "shasum": ""
             },
             "require": {
@@ -7807,7 +7871,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
                 "security": "https://github.com/sebastianbergmann/phpunit/security/policy",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/11.5.16"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/11.5.17"
             },
             "funding": [
                 {
@@ -7823,7 +7887,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-04-08T06:34:47+00:00"
+            "time": "2025-04-08T07:59:11+00:00"
         },
         {
             "name": "sebastian/cli-parser",
@@ -9003,7 +9067,7 @@
         }
     ],
     "aliases": [],
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "stability-flags": {},
     "prefer-stable": true,
     "prefer-lowest": false,

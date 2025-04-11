@@ -405,6 +405,7 @@
                     </svg></span>
                 </div>
                 @if(Cart::instance('cart')->content()->where('id',$product->id)->count()>0)
+
                   <a href="{{route('cart.index')}}" class="pc__atc btn anim_appear-bottom btn position-absolute border-0 text-uppercase fw-medium btn-warning mb-3">Go to Cart</a>
                 @else
                 <form name="addtocart-form" method="post" action="{{ route('cart.add') }}">
@@ -452,11 +453,15 @@
                 </div>
                 
                 @if(Cart::instance('wishlist')->content()->where('id',$product->id)->count()>0)
+                <form method="POST" action="{{route('wishlist.item.remove',['rowId'=>Cart::instance('wishlist')->content()->where('id',$product->id)->first()->rowId])}}">
+                  @csrf
+                  @method('DELETE')
                   <button type="submit" class="pc__btn-wl position-absolute top-0 end-0 bg-transparent border-0 js-add-wishlist filled-heart" title="Add To Wishlist">
                     <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <use href="#icon_heart" />
                     </svg>
                     </button>
+                </form>  
                 @else
                 <form method="POST" action="{{route('wishlist.add')}}">
                    @csrf

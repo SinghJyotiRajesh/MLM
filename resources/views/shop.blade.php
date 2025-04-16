@@ -510,4 +510,12 @@
     })
   });
 </script>
+<!-- <script>
+  $(function(){
+    $("#pagesize").on("change", function(){
+      $("#size").val($(this).val());
+      $("#frmfilter").submit();
+    });
+  });
+</script> -->
 @endpush

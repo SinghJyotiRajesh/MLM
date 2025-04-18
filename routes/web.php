@@ -33,6 +33,8 @@ Route::delete('/wishlist/clear',[WishlistController::class,'empty_wishlist'])->n
 Route::post('/wishlist/move-to-cart/{rowId}',[WishlistController::class,'move_to_cart'])->name('wishlist.move_to_cart');
 
 Route::get('/checkout',[CartController::class,'checkout'])->name('cart.checkout');
+Route::post('place-an-order',[CartController::class,'place_an_order'])->name('cart.place.an.order');
+Route::get('/order-confirmation',[CartController::class,'order_confirmation'])->name('cart.order.confirmation');
 
 
 Route::middleware(['auth'])->group(function () {
@@ -68,5 +70,6 @@ Route::middleware(['auth',AuthAdmin::class])->group(function () {
     Route::get('/admin/coupon/{id}/edit',[AdminController::class,'coupon_edit'])->name('admin.coupon.edit');
     Route::put('/admin/coupon/update', [AdminController::class,'coupon_update'])->name('admin.coupon.update');
     Route::delete('/admin/coupon/{id}/delete',[AdminController::class,'coupon_delete'])->name('admin.coupon.delete');
+    Route::delete('/admin/orders',[AdminController::class,'orders'])->name('admin.orders');
 
 });

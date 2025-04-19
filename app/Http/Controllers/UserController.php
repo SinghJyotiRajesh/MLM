@@ -10,4 +10,8 @@ class UserController extends Controller
     {
         return view ('user.index');
     }
+    public  function orders()
+    {
+        $orders = Order::where('user_id',Auth::user)
+    }
 }

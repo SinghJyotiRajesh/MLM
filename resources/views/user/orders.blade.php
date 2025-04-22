@@ -47,7 +47,7 @@
                             <thead>
                                 <tr>
                                     <th style="width: 80px">OrderNo</th>
-                                    <th>Name</th>
+                                    <th class="text-center">Name</th>
                                     <th class="text-center">Phone</th>
                                     <th class="text-center">Subtotal</th>
                                     <th class="text-center">Tax</th>
@@ -68,7 +68,15 @@
                                     <td class="text-center">{{$order->subtotal}}</td>
                                     <td class="text-center">{{$order->tax}}</td>
                                     <td class="text-center">{{$order->total}}</td>
-                                    <td class="text-center">{{$order->status}}</td>
+                                    <td class="text-center">
+                                        @if($order->status == 'delivered')
+                                        <span class="badge bg-success">Delivered</span>
+                                        @elseif($order->status == 'canceled')
+                                        <span class="badge bg-danger">Canceled</span>
+                                        @else
+                                        <span class="badge bg-warning">Ordered</span>
+                                        @endif
+                                    </td>
                                     <td class="text-center">{{$order->created_at}}</td>
                                     <td class="text-center">{{$order->orderItems->count()}}</td>
                                     <td class="text-center">{{$order->delivered_date}}</td>

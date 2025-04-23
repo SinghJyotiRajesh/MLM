@@ -118,6 +118,9 @@
                          </div>
                     </div>
                     <div class="table-responsive">
+                        @if(Session::has('status'))
+                        <p class="alert alert-success">{{Session::get('status')}}</p>
+                        @endif
                         <table class="table table-bordered table-striped table-transaction">
                             <tr>
                                 <th>Order No</th>
@@ -255,38 +258,41 @@
                         </tbody>
                     </table>
                 </div>
+                @if($order->status === 'ordered')
                 <div class="wg-box mt-5 text-right">
                    <form action="{{route('user.order.cancel')}}" method="POST">
                      @csrf
                      @method('PUT')
                      <input type="hidden" name="order_id" value="{{$order->id}}"/>
-                     <button type="button" class="btn btn-danger cancel">Cancel Order</button>
+                      <button class="btn btn-danger cancel">Cancel Order</button>
                    </form>
                 </div>
+                @endif
             </div>
         </div>
     </section>
 </main>
 @endsection
 @push('scripts')
-<script>
-     $(function() {
-        $('.cancel').on('click',function(e) {
-            e.preventDefault();
-            var form = $(this).closest('form');
-            swal({
-                title: "Are you sure?",
-                text:"You want to cancel this order?",
-                type:"warning",
-                buttons:["No","Yes"],
-                confirmButtonColor:'#dc3545'
-            }).then(function(result){
-                if(result){
-                    form.submit();
-                }
-              
-            });            
-        });
-     });
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+ <script>
+    $(function() {
+    $('.cancel').on('click', function(e) {
+        e.preventDefault();
+        var form = $(this).closest('form');
+        swal({
+            title: "Are you sure?",
+            text:"You want to cancel this order?",
+            type:"warning",
+            buttons:["No","Yes"],
+            confirmButtonColor:'#dc3545'
+        }).then(function(result){
+            if(result){
+                form.submit();
+            }
+        });            
+    });
+});
 </script>
 @endpush

@@ -1,19 +1,23 @@
 @extends('layouts.app')
 @section('content')
 <style>
-  .brand-list li, .category-list li{
-    line-height:40px;
+  .brand-list li,
+  .category-list li {
+    line-height: 40px;
   }
-  .brand-list li .chk-brand, .category-list li .chk-category{
+
+  .brand-list li .chk-brand,
+  .category-list li .chk-category {
     width: 1rem;
     height: 1rem;
     color: #e4e4e4;
     border: 0.125rem solid currentColor;
-    border-radius:0;
-    margin-right:0.75rem;
+    border-radius: 0;
+    margin-right: 0.75rem;
   }
-  .filled-heart{
-    color:orange;
+
+  .filled-heart {
+    color: orange;
   }
 </style>
 <main class="pt-90">
@@ -342,12 +346,12 @@
         </div>
 
         <div class="shop-acs d-flex align-items-center justify-content-between justify-content-md-end flex-grow-1">
-        <select class="shop-acs__select form-select w-auto border-0 py-0 order-1 order-md-0" aria-label="Page Size" id="pagesize" name="pagesize" style="margin-right:20px;">
+          <select class="shop-acs__select form-select w-auto border-0 py-0 order-1 order-md-0" aria-label="Page Size" id="pagesize" name="pagesize" style="margin-right:20px;">
             <option value="12" {{ $size==12 ? 'selected':''}}>Show</option>
             <option value="24" {{ $size==24 ? 'selected':''}}>24</option>
             <option value="48" {{ $size==48 ? 'selected':''}}>48</option>
             <option value="102" {{ $size==102 ? 'selected':''}}>102</option>
-            
+
           </select>
           <select class="shop-acs__select form-select w-auto border-0 py-0 order-1 order-md-0" aria-label="Sort Items"
             name="total-number">
@@ -395,11 +399,11 @@
                         height="400" alt="{{$product->name}}" class="pc__img"></a>
                   </div>
                   <div class="swiper-slide">
-                      @foreach (explode(",",$product->images) as $gimg)
-                      
-                        <a href="{{route('shop.product.details',['product_slug'=>$product->slug])}}"><img loading="lazy" src="{{asset('uploads/products')}}/{{$gimg}}"
+                    @foreach (explode(",",$product->images) as $gimg)
+
+                    <a href="{{route('shop.product.details',['product_slug'=>$product->slug])}}"><img loading="lazy" src="{{asset('uploads/products')}}/{{$gimg}}"
                         width="330" height="400" alt="{{$product->name}}" class="pc__img"></a>
-                      @endforeach
+                    @endforeach
                   </div>
                 </div>
                 <span class="pc__img-prev"><svg width="7" height="11" viewBox="0 0 7 11"
@@ -413,29 +417,31 @@
               </div>
               @if(Cart::instance('cart')->content()->where('id',$product->id)->count()>0)
 
-                <a href="{{route('cart.index')}}" class="pc__atc btn anim_appear-bottom btn position-absolute border-0 text-uppercase fw-medium btn-warning mb-3">Go to Cart</a>
+              <a href="{{route('cart.index')}}" class="pc__atc btn anim_appear-bottom btn position-absolute border-0 text-uppercase fw-medium btn-warning mb-3">Go to Cart</a>
               @else
               <form name="addtocart-form" method="post" action="{{ route('cart.add') }}">
                 @csrf
-                <input type="hidden" name="id" value="{{$product->id}}"/>
-                <input type="hidden" name="quantity" value="1"/>
-                <input type="hidden" name="name" value="{{$product->name}}"/>
-                <input type="hidden" name="price" value="{{$product->sale_price == '' ? $product->regular_price : $product->sale_price}}"/>
+                <input type="hidden" name="id" value="{{$product->id}}" />
+                <input type="hidden" name="quantity" value="1" />
+                <input type="hidden" name="name" value="{{$product->name}}" />
+                <input type="hidden" name="price" value="{{$product->sale_price == '' ? $product->regular_price : $product->sale_price}}" />
                 <button
                   type="submit" class="pc__atc btn anim_appear-bottom btn position-absolute border-0 text-uppercase fw-medium" data-aside="cartDrawer" title="Add To Cart">Add To Cart</button>
               </form>
-                @endif 
+              @endif
             </div>
             <div class="pc__info position-relative">
               <p class="pc__category">{{$product->category->name}}</p>
-              <h6 class="pc__title"><a href="{{route('shop.product.details',['product_slug'=>$product->slug])}}">{{$product->name}}</a></h6>
+              <h6 class="pc__title">
+                <a href="{{route('shop.product.details',['product_slug'=>$product->slug])}}">{{$product->name}}</a>
+              </h6>
               <div class="product-card__price d-flex">
                 <span class="money price">
                   @if($product->sale_price)
-                    <s>${{$product->regular_price}}</s> ${{$product->sale_price}}
+                  <s>${{$product->regular_price}}</s> ${{$product->sale_price}}
                   @else
-                    ${{$product->regular_price}}
-                  @endif   
+                  ${{$product->regular_price}}
+                  @endif
                 </span>
               </div>
               <div class="product-card__review d-flex align-items-center">
@@ -458,7 +464,7 @@
                 </div>
                 <span class="reviews-note text-lowercase text-secondary ms-1">8k+ reviews</span>
               </div>
-              
+
               @if(Cart::instance('wishlist')->content()->where('id',$product->id)->count()>0)
               <form method="POST" action="{{route('wishlist.item.remove',['rowId'=>Cart::instance('wishlist')->content()->where('id',$product->id)->first()->rowId])}}">
                 @csrf
@@ -467,23 +473,23 @@
                   <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <use href="#icon_heart" />
                   </svg>
-                  </button>
-              </form>  
+                </button>
+              </form>
               @else
               <form method="POST" action="{{route('wishlist.add')}}">
-                  @csrf
-                  <input type="hidden" name="id" value="{{$product->id}}"/>
-                  <input type="hidden" name="name" value="{{$product->name}}"/>
-                  <input type="hidden" name="price" value="{{$product->sale_price == '' ? $product->regular_price : $product->sale_price}}"/> 
-                  <input type="hidden" name="quantity" value="1"/>
-                  <button type="submit" class="pc__btn-wl position-absolute top-0 end-0 bg-transparent border-0 js-add-wishlist"
-                    title="Add To Wishlist">
-                    <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <use href="#icon_heart" />
-                    </svg>
-                  </button>
+                @csrf
+                <input type="hidden" name="id" value="{{$product->id}}" />
+                <input type="hidden" name="name" value="{{$product->name}}" />
+                <input type="hidden" name="price" value="{{$product->sale_price == '' ? $product->regular_price : $product->sale_price}}" />
+                <input type="hidden" name="quantity" value="1" />
+                <button type="submit" class="pc__btn-wl position-absolute top-0 end-0 bg-transparent border-0 js-add-wishlist"
+                  title="Add To Wishlist">
+                  <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <use href="#icon_heart" />
+                  </svg>
+                </button>
               </form>
-              @endif    
+              @endif
             </div>
           </div>
         </div>
@@ -491,20 +497,20 @@
       </div>
       <div class="divider"></div>
       <div class="flex items-center justify-between flex-wrap gap10 wgp-pagination">
-          {{$products->withQueryString()->links('pagination::bootstrap-5')}}
+        {{$products->withQueryString()->links('pagination::bootstrap-5')}}
       </div>
     </div>
   </section>
-  </main>
-  <form id="frmfilter" method="GET" action="{{route('shop.index')}}">
-    <input type="hidden" name="page" value="{{$products->currentPage()}}">
-    <input type="hidden" name="size" id="size" value="{{$size}}"/>
-  </form>
+</main>
+<form id="frmfilter" method="GET" action="{{route('shop.index')}}">
+  <input type="hidden" name="page" value="{{$products->currentPage()}}">
+  <input type="hidden" name="size" id="size" value="{{$size}}" />
+</form>
 @endsection
 @push('scripts')
 <script>
-  $(function(){
-    $("#pagesize").on("change",function(){
+  $(function() {
+    $("#pagesize").on("change", function() {
       $("#size").val($("#pagesize option:selected").val());
       $("#frmfilter").submit();
     })

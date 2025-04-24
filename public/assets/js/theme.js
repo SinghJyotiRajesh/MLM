@@ -1339,9 +1339,10 @@ function pureFadeOut(e) {
     window.location.href='./shop_order_complete.html';
   });
 
-  document.querySelector('.js-show-register').addEventListener('click', function(e) {
-    document.querySelector(this.getAttribute("href")).click();
-  });
+  // document.querySelector('.js-show-register').addEventListener('click', function(e) {
+  //   document.querySelector(this.getAttribute("href")).click();
+  // });
+  
 
   document.addEventListener('DOMContentLoaded', function () {
     var registerLink = document.querySelector('.js-show-register');

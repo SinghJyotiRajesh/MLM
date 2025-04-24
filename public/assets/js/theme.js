@@ -1343,19 +1343,18 @@ function pureFadeOut(e) {
     document.querySelector(this.getAttribute("href")).click();
   });
 
- 
-  // document.addEventListener('DOMContentLoaded', function () {
-  //   var registerLink = document.querySelector('.js-show-register');
-  //   if (registerLink) {
-  //     registerLink.addEventListener('click', function (e) {
-  //       e.preventDefault(); // in case it's an anchor
-  //       var target = document.querySelector(this.getAttribute("href"));
-  //       if (target) {
-  //         target.click();
-  //       }
-  //     });
-  //   }
-  // });
+  document.addEventListener('DOMContentLoaded', function () {
+    var registerLink = document.querySelector('.js-show-register');
+    if (registerLink) {
+      registerLink.addEventListener('click', function (e) {
+        e.preventDefault(); // in case it's an anchor
+        var target = document.querySelector(this.getAttribute("href"));
+        if (target) {
+          target.click();
+        }
+      });
+    }
+  });
   
   $('button.js-add-wishlist, a.add-to-wishlist').off('click').on('click', function() {
     if($(this).hasClass("active"))

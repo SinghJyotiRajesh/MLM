@@ -37,6 +37,8 @@ Route::post('place-an-order',[CartController::class,'place_an_order'])->name('ca
 Route::get('/order-confirmation',[CartController::class,'order_confirmation'])->name('cart.order.confirmation');
 Route::get('/contact-us',[HomeController::class,'contact'])->name('home.contact');
 Route::post('/contact/store',[HomeController::class,'contact_store'])->name('home.contact.store');
+Route::get('/search',[HomeController::class,'search'])->name('home.search');
+Route::get('/about',[HomeController::class,'about'])->name('home.about');
 
 
 Route::middleware(['auth'])->group(function () {
@@ -86,4 +88,5 @@ Route::middleware(['auth',AuthAdmin::class])->group(function () {
     Route::delete('/admin/slide/{id}/delete',[AdminController::class,'slide_delete'])->name('admin.slide.delete');
     Route::get('/admin/contact',[AdminController::class,'contacts'])->name('admin.contacts');
     Route::delete('/admin/contact/{id}/delete',[AdminController::class,'contact_delete'])->name('admin.contact.delete');
+    Route::get('/admin/search',[AdminController::class,'search'])->name('admin.search');
 });

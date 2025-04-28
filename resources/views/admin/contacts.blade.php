@@ -69,7 +69,7 @@
                                             <div class="item text-danger delete">
                                                 <i class="icon-trash-2"></i>
                                             </div>
-                                        </form>
+                                        </form> 
                                     </div>
                                 </td>
                             </tr>
